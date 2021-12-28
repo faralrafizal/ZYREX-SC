@@ -1,0 +1,32 @@
+.cta-customer-ps {
+	padding-bottom: 20px;
+}
+.cta-customer-ps a {
+	margin-right: 12px;
+}
+.red {
+	color: red;
+}
+
+/* Nota Besar */
+.nota-besar {
+	color: #000000 !important;
+}
+.nota-besar .tabel tr th {
+	font-size: 20px !important;
+}
+.nota-besar .tabel tr td {
+	padding: 5px !important;
+}
+.nota-besar .atb-box ul {
+	margin-left: -20px;
+}
+.nota-besar .atb-box ul li {
+	list-style-type: decimal;
+}
+.nota-besar .kondisi-barang-servis ul {
+	margin-left: -20px;
+}
+.nota-besar .kondisi-barang-servis ul li {
+	list-style-type: circle;
+}
