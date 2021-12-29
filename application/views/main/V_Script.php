@@ -56,7 +56,7 @@
                     var id = $(this).val();
                     $.ajax({
                         type: "POST",
-                        url: "<?= base_url('admin/C_Admin/getKabupaten') ?>",
+                        url: "<?= base_url('admin/C_Admin/create_customer_process') ?>",
                         data: {
                             id: id
                         },
@@ -67,6 +67,7 @@
                     });
                 });
         </script>
+        
     <script src="<?php echo base_url() ?>/assets/js/morris/raphael-2.1.0.min.js"></script>
     <script src="<?php echo base_url() ?>/assets/js/morris/morris.js"></script>
     <!-- Custom Js -->

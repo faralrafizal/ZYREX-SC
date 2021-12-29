@@ -618,6 +618,7 @@ class M_Admin extends CI_Model {
 							'customer_id' => $customer_id
 						));    
 	}
+
 }
 ?>
     

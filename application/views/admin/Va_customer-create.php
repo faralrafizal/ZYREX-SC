@@ -41,6 +41,23 @@
                                         </div>
 
                                         <div class="form-group">
+                                            <label class="control-label" for="provinsi">Provinsi <span class="red">*</span></label>
+                                            <select name="provinsi" id="provinsi" class="form-select">
+                                                <option value="">--Pilih Provinsi--</option>
+                                                <?php foreach ($provinsi as $prov) : ?>
+                                    <option value="<?= $prov->id_provinsi; ?>"><?= $prov->nama; ?></option>
+                                <?php endforeach; ?>
+                                              </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label" for="kabupaten">Kabupaten <span class="red">*</span></label>
+                                            <select name="kabupaten" id="kabupaten" class="form-select">
+                                                <option value="">--Pilih Kabupaten--</option>
+                                              </select>
+                                        </div>
+
+                                        <div class="form-group">
                                             <label class="control-label" for="tgl_lahir">Tanggal Lahir <span class="red">*</span></label>
                                             <input type="date" name="tgl_lahir" class="form-control" required>
                                         </div>

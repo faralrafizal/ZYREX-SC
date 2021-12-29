@@ -232,9 +232,7 @@ class C_Admin extends CI_Controller
 		$data['data_pm']	= $this->M_Admin->tb_pm()->result();
 		$data['data_teknisi']	= $this->M_Admin->tb_teknisi()->result();
 		$data['data_user']	= $this->M_Admin->tb_user()->result();
-		$data['provinsi']	= $this->M_Admin->tb_provinsi()->result();
-		$idprov = $this->input->post('id_kabupaten');
-		$data['kabupaten']	= $this->M_Admin->tb_kabupaten($idprov)->result();
+		
 		
 
 		$this->load->view('admin/Va_pm-create', $data);
@@ -249,7 +247,6 @@ class C_Admin extends CI_Controller
 					                'is_unique' => 'This %s already exists.'
 					        	));  
     	$this->form_validation->set_rules('address','ALAMAT','required');
-		$this->form_validation->set_rules('provinsi','PROVINSI','required');
     	$this->form_validation->set_rules('tlpn','NO. TLPN','required');
     	$this->form_validation->set_rules('password','PASSWORD','required|min_length[5]|max_length[20]');  
     	$this->form_validation->set_rules('passconf','CONFIRM PASSWORD','required|matches[password]');  
@@ -266,10 +263,6 @@ class C_Admin extends CI_Controller
 			$data['pm_pass'] 	= $this->input->post('password');
 			$data['pm_nama'] 	= htmlspecialchars($this->input->post('fullname'),true);
 			$data['pm_almt'] 	= htmlspecialchars($this->input->post('address'),true);
-			$data['provinsi_id'] 	= $this->input->post('provinsi');
-			$data['kabupaten_id'] 	= $this->input->post('kabupaten');
-			$data['kecamatan_id'] 	= $this->input->post('kecamatan');
-			$data['desa_id'] 	= $this->input->post('desa');
 			$data['pm_tlpn'] 	= $this->input->post('tlpn');
 			$data['level']		= 2;
 			$this->M_Admin->create_pm($data);
@@ -281,26 +274,6 @@ class C_Admin extends CI_Controller
 		
 	}
 
-	public function getKabupaten()
-    {
-        $kabupatenId = $this->input->post('kabupaten');
-        $idprov = $this->input->post('id_kabupaten');
-        $data = $this->M_Admin->tb_kabupaten($idprov);
-        $output = '<option value=""> --Pilih Kabupaten-- </option>';
-        foreach ($data as $row) {
-            if ($kabupatenId) { //edit
-                if ($kabupatenId == $row->id_kabupaten) {
-                    $output .= '<option value="' . $row->id_kabupaten . '" selected> ' . $row->nama . '</option>';
-                } else {
-                    $output .= '<option value="' . $row->id_kabupaten . '"> ' . $row->nama . '</option>';
-                }
-            } else { //tambah
-                $output .= '<option value="' . $row->id_kabupaten . '"> ' . $row->nama . '</option>';
-            }
-        }
-        $this->output->set_content_type('application/json')->set_output(json_encode($output));
-    }
-	
 
     //READ
 	public function read_pm()
@@ -719,13 +692,16 @@ class C_Admin extends CI_Controller
 	public function read_customer()
 	{
 		$data['read_customer'] = $this->M_Admin->tb_customer()->result();
+		$data['provinsi_id'] = $this->M_Admin->tb_provinsi()->result();
         $this->load->view('admin/Va_customer-read', $data);
 	}
 
 	//REDIRECT
-	public function create_customer()
+	public function create_customer($idprov)
 	{
 		$data['data_customer']		= $this->M_Admin->tb_customer()->result();
+		$data['provinsi'] = $this->M_Admin->tb_provinsi()->result();
+		$data['kabupaten'] = $this->M_Admin->tb_kabupaten($idprov)->row();
 		$this->load->view('admin/Va_customer-create', $data);
 	}
 
@@ -751,6 +727,8 @@ class C_Admin extends CI_Controller
 			$data['customer_wa'] 	    = $this->input->post('whatsapp');
 			$data['customer_email'] 	= $this->input->post('email');
 			$data['customer_alamat'] 	= $this->input->post('address');
+			$data['provinsi_id'] 	= $this->input->post('provinsi');
+			$data['kabupaten_id'] 	= $this->input->post('kabupaten');
 			$data['customer_tgl_lahir'] = $this->input->post('tgl_lahir');
 			$this->M_Admin->create_customer($data);
 			echo "<script>
@@ -759,6 +737,26 @@ class C_Admin extends CI_Controller
 				  </script>";
 		}
 	}
+
+	public function getKabupaten()
+    {
+        $kabupatenId = $this->input->post('kabupaten');
+        $idprov = $this->input->post('id');
+        $data = $this->Dynamic_model->getDatakabupaten($idprov);
+        $output = '<option value="">--Pilih Kabupaten-- </option>';
+        foreach ($data as $row) {
+            if ($kabupatenId) { //edit
+                if ($kabupatenId == $row->id) {
+                    $output .= '<option value="' . $row->id . '" selected> ' . $row->nama . '</option>';
+                } else {
+                    $output .= '<option value="' . $row->id . '"> ' . $row->nama . '</option>';
+                }
+            } else { //tambah
+                $output .= '<option value="' . $row->id . '"> ' . $row->nama . '</option>';
+            }
+        }
+        $this->output->set_content_type('application/json')->set_output(json_encode($output));
+    }
 
 	//UPDATE
 	public function edit_customer($customer_id)

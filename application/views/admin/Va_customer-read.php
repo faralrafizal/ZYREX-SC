@@ -33,6 +33,7 @@
                                         <th>Nama</th>
                                         <th>No. WhatsApp</th>
                                         <th>Email</th>
+                                        <th>Alamat lengkap</th>
                                         <th style="text-align: center;">Total Servis</th>
                                         <th style="text-align: center;">Actions</th>
                                     </tr>
@@ -44,6 +45,8 @@
                                         <td><?=$customer->customer_nama; ?></td>
                                         <td><?= $customer->customer_wa; ?></td>
                                         <td><?=$customer->customer_email; ?></td>
+                                        <td>"<?=$customer->customer_alamat;?>"<?$customer->provinsi; ?></td>
+                                        
                                         <td style="text-align: center;">
                                             <?php  
                                                 $wa = $customer->customer_wa;

@@ -41,12 +41,7 @@
                                               </select>
                                         </div>
                                         
-                                        <div class="form-group">
-                                            <label class="control-label" for="kabupaten">Kabupaten <span class="red">*</span></label>
-                                            <select name="kabupaten" id="kabupaten" class="form-select">
-                                                <option value="">--Pilih Kabupaten--</option>
-                                              </select>
-                                        </div>
+                                        
 
                                         <div class="form-group">
                                             <label class="control-label" for="address">Alamat <span class="red">*</span></label>
