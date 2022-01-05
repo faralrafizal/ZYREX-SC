@@ -58,20 +58,18 @@
                             <a href="<?php echo site_url('admin/C_Admin/read_komplain');?>"><i class="glyphicon glyphicon-envelope"></i> Komplain</a>
                         </li>
                          <li>
-                            <a href="#"><i class="glyphicon glyphicon-file"></i> Laporan<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
+                            <a href="<?php echo site_url('admin/laporan/laporan');?>"><i class="glyphicon glyphicon-file"></i> Laporan Periode</a>
+                            
+                                <!-- <li>
                                     <a href="<?php echo site_url('admin/report');?>" target="_blank">Laporan Keseluruhan</a>
-                                </li> 
-                                <li>
+                                </li>  -->
+                                <!-- <li>
                                     <a href="<?php echo site_url('admin/laporan/laporan');?>" >Laporan Periode</a>
-                                </li>
-                            </ul>
+                                </li> -->
+                            
                             <!-- /.nav-second-level -->
                         </li>
-                        <li>
-                                    <a href="<?php echo site_url('admin/select');?>">Select</a>
-                                </li>
+                        
                         <li>
                             <a href="<?php echo site_url('C_Main/logout');?>" onclick="return confirm('Apakah anda yakin keluar aplikasi ?')"><i class="glyphicon glyphicon-log-out"></i> Logout</a>
                         </li>

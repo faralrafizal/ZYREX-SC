@@ -45,7 +45,7 @@
                                         <td><?=$customer->customer_nama; ?></td>
                                         <td><?= $customer->customer_wa; ?></td>
                                         <td><?=$customer->customer_email; ?></td>
-                                        <td>"<?=$customer->customer_alamat;?>"<?$customer->provinsi; ?></td>
+                                        <td><?=$customer->customer_alamat;?></td>
                                         
                                         <td style="text-align: center;">
                                             <?php  

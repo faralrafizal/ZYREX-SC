@@ -693,21 +693,26 @@ class C_Admin extends CI_Controller
 	{
 		$data['read_customer'] = $this->M_Admin->tb_customer()->result();
 		$data['provinsi_id'] = $this->M_Admin->tb_provinsi()->result();
+		$data['kabupaten_id'] = $this->M_Admin->tb_kabupaten()->result();
+		$data['kecamatan_id'] = $this->M_Admin->tb_kecamatan()->result();
         $this->load->view('admin/Va_customer-read', $data);
 	}
 
 	//REDIRECT
-	public function create_customer($idprov)
+	public function create_customer()
 	{
 		$data['data_customer']		= $this->M_Admin->tb_customer()->result();
 		$data['provinsi'] = $this->M_Admin->tb_provinsi()->result();
-		$data['kabupaten'] = $this->M_Admin->tb_kabupaten($idprov)->row();
+		$data['kabupaten'] = $this->M_Admin->tb_kabupaten()->result();
+		$data['kecamatan'] = $this->M_Admin->tb_kecamatan()->result();
+		
 		$this->load->view('admin/Va_customer-create', $data);
 	}
 
 	// CREATE
 	public function create_customer_process()
 	{
+		
 		$this->form_validation->set_rules('fullname','USER NAME','required');
     	$this->form_validation->set_rules('whatsapp','whatsapp','required|trim|is_unique[customer.customer_wa]',
 					    		array(
@@ -738,21 +743,42 @@ class C_Admin extends CI_Controller
 		}
 	}
 
+// 	public function ambilDataProvinsi()
+// 	{
+// 	if ($this->request->isAJAX()){
+// 		$caridata = $this->request->getGET('search');
+
+// 		$dataProvinsi = $this->M_Admin->tb_provinsi('wilayah_provinsi')->LIKE('nama', $caridata)->get();
+
+// 		if($dataProvinsi->getNumRows() > 0){
+// 			$list =[];
+// 			$key = 0;
+// 			foreach($dataProvinsi->getResultArray() as $row):
+
+// 				$list[$key]['id'] = $row['id_provinsi'];
+// 				$list[$key]['text'] = $row['nama'];
+// 				$key++;
+// 			endforeach;
+// 			echo json_encode($list);
+// 		}
+// 	}
+// }
+
 	public function getKabupaten()
     {
         $kabupatenId = $this->input->post('kabupaten');
         $idprov = $this->input->post('id');
-        $data = $this->Dynamic_model->getDatakabupaten($idprov);
+        $data = $this->M_Admin->tb_kabupaten($idprov);
         $output = '<option value="">--Pilih Kabupaten-- </option>';
         foreach ($data as $row) {
             if ($kabupatenId) { //edit
                 if ($kabupatenId == $row->id) {
-                    $output .= '<option value="' . $row->id . '" selected> ' . $row->nama . '</option>';
+                    $output .= '<option value="' . $row->id_kabupaten . '" selected> ' . $row->nama . '</option>';
                 } else {
-                    $output .= '<option value="' . $row->id . '"> ' . $row->nama . '</option>';
+                    $output .= '<option value="' . $row->id_kabupaten . '"> ' . $row->nama . '</option>';
                 }
             } else { //tambah
-                $output .= '<option value="' . $row->id . '"> ' . $row->nama . '</option>';
+                $output .= '<option value="' . $row->id_kabupaten . '"> ' . $row->nama . '</option>';
             }
         }
         $this->output->set_content_type('application/json')->set_output(json_encode($output));

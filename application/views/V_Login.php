@@ -33,7 +33,7 @@
                                     <input class="form-control" placeholder="Username" name="username" type="text" autofocus required>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" required>
+                                    <input class="form-control" placeholder="Password" name="password" type="password" autocomplete="on" required>
                                 </div>
                                 <div class="checkbox">
                                    <br>

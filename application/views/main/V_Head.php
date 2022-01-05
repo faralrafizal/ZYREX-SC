@@ -30,5 +30,8 @@
 
     <!-- Style -->
     <link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet" type="text/css">
+    
+    <!-- select2 -->
+    <link href="<?= base_url() ?>assets/vendor/bootstrap/css/select2.min.css" rel="stylesheet" />
 
 </head>

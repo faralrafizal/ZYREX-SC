@@ -5,7 +5,7 @@
     </div>
 
     <!-- jQuery -->
-    
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
     <script src="<?php echo base_url();?>assets/vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
@@ -36,9 +36,9 @@
                 responsive: true
             });
         });
-        </script>
+       
 
-    <script>
+    
         function doconfirm()
         {
             job=confirm("Apakah anda yakin akan menghapus data ini ?");
@@ -46,29 +46,73 @@
             {
                 return false;
             }
-        }
-        </script>
+        };
+        
 
-    <!-- script selectoption -->
-        <script>
-           $(document).ready(function() {
-                $('#provinsi').change(function() {
-                    var id = $(this).val();
-                    $.ajax({
-                        type: "POST",
-                        url: "<?= base_url('admin/C_Admin/create_customer_process') ?>",
-                        data: {
-                            id: id
-                        },
-                        dataType: "JSON",
-                        success: function(response) {
-                            $('#kabupaten').html(response);
-                        }
-                    });
+    
+        // function dataProvinsi(){
+        //     $('#provinsi').select2({
+
+        //         minimumInputLength: 3,
+        //         allowClear :true,
+        //         placeholder : 'Cari Provinsi',
+        //         ajax: {
+        //             dataType : 'json';
+        //             url: "<?= site_url('admin/C_Admin/tb_provinsi')?>",
+        //             delay: 500,
+        //             data :function(params){
+        //                 return {
+        //                     search:params.term
+        //                 }
+        //             },
+        //             processResults : function (data, page) {
+        //                 return {
+        //                     results
+        //                 }
+        //               }
+        //         }
+                
+        //     }
+        //     ) {
+        //         var id = $(this).val();
+        //         $.ajax({
+        //             type: "POST",
+        //             url: "<?= base_url('admin/C_Admin/getKabupaten') ?>",
+        //             data: {
+        //                 id: id
+        //             },
+        //             dataType: "JSON",
+        //             success: function(response) {
+        //                 console.log(response);
+        //             }
+        //         });
+        //     });
+        // }
+         $(document).ready(function() {
+            $('#provinsi').change(function() {
+                var id = $(this).val();
+                $.ajax({
+                    type: "POST",
+                    url: "<?= base_url('admin/C_Admin/getKabupaten') ?>",
+                    data: {
+                        id: id
+                    },
+                    dataType: "JSON",
+                    success: function(response) {
+                        console.log(response);
+                    }
                 });
+            });
+        });
+
         </script>
         
-    <script src="<?php echo base_url() ?>/assets/js/morris/raphael-2.1.0.min.js"></script>
-    <script src="<?php echo base_url() ?>/assets/js/morris/morris.js"></script>
+     <div> 
+        <script src="<?php echo base_url() ?>/assets/js/morris/raphael-2.1.0.min.js"></script>
+        <script src="<?php echo base_url() ?>/assets/js/morris/morris.js"></script>
+     </div>
+
+     <!-- select2 -->
+     <script src="<?= base_url() ?>assets/js/select2.min.js"></script>
     <!-- Custom Js -->
     <script src="<?php echo base_url() ?>/assets/js/custom-scripts.js"></script>

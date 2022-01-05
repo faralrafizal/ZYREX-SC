@@ -190,62 +190,97 @@ class M_Admin extends CI_Model {
 /*====================================================== MODULES kabupaten =============================================*/
 
 	//SELECT * FROM TABLES
-	function tb_kabupaten($idprov)
-	{
-		$this->db->select('*')
-				 ->from('wilayah_kabupaten',['provinsi_id'=>$idprov])
-					 ->order_by('nama','asc');
-		return $this->db->get();
-	}
+	
+//SELECT * FROM TABLES
+function tb_kabupaten()
+{
+	$this->db->select('*')
+			 ->from('wilayah_kabupaten')
+			 ->order_by('nama','asc');
+	return $this->db->get();
+}
 
-	function kabupaten_count()
-	{
-		$this->db->select('COUNT(id_kabupaten) AS kabupaten_count')
-				 ->from('wilayah_kabupaten');
-		return $this->db->get();
-	}
+function kabupaten_count()
+{
+	$this->db->select('COUNT(id_kabupaten) AS kabupaten_count')
+			 ->from('wilayah_kabupaten');
+	return $this->db->get();
+}
 
-	function id_kabupaten($id_kabupaten)
-	{
-		$this->db->select('*')
-				 ->from('kabupaten')
-				 ->where('id_kabupaten', $id_kabupaten);
-		return $this->db->get();
-	}
+function id_kabupaten($id_kabupaten)
+{
+	$this->db->select('*')
+			 ->from('kabupaten')
+			 ->where('id_kabupaten', $id_kabupaten);
+	return $this->db->get();
+}
 
-	//CREATE, UPDATE, DELETE
-	function create_kabupaten($data)
-	{
-		$this->db->insert('kabupaten', $data);
-	}	  	   
-	    
-	function update_kabupaten($id_kabupaten, $data)
-	{
-		$this->db->where(array('id_kabupaten' => $id_kabupaten, 'id_kabupaten !=' => 1));
-		$this->db->update('kabupaten', $data);  
-	}
+//CREATE, UPDATE, DELETE
+function create_kabupaten($data)
+{
+	$this->db->insert('kabupaten', $data);
+}	  	   
+	
+function update_kabupaten($id_kabupaten, $data)
+{
+	$this->db->where(array('id_kabupaten' => $id_kabupaten, 'id_kabupaten !=' => 1));
+	$this->db->update('kabupaten', $data);  
+}
 
-	function delete_kabupaten($id_kabupaten)
-	{ 
-		$this->db->delete('kabupaten', array(
-							'id_kabupaten' => $id_kabupaten, 
-							'id_kabupaten !=' => 1
-						));    
-	}
+function delete_kabupaten($id_kabupaten)
+{ 
+	$this->db->delete('kabupaten', array(
+						'id_kabupaten' => $id_kabupaten, 
+						'id_kabupaten !=' => 1
+					));    
+}
 
+/*====================================================== MODULES kecamatan =============================================*/
+	
+//SELECT * FROM TABLES
+function tb_kecamatan()
+{
+	$this->db->select('*')
+			 ->from('wilayah_kecamatan')
+			 ->order_by('nama','asc');
+	return $this->db->get();
+}
 
-	// Used for paginationsample
-	// function paging_provinsi($limit=array())
-	// { 
-	// 	$this->db->select('*');
-	// 	$this->db->from('provinsi');
-	// 	$this->db->order_by('pm_user', 'asc');
-		        
-	// 	if ($limit != NULL)
-	// 	$this->db->limit($limit['perpage'], $limit['offset']);
-		           
-	// 	return $this->db->get();
-	// }
+function kecamatan_count()
+{
+	$this->db->select('COUNT(id_kecamatan) AS kecamatan_count')
+			 ->from('wilayah_kecamatan');
+	return $this->db->get();
+}
+
+function id_kecamatan($id_kecamatan)
+{
+	$this->db->select('*')
+			 ->from('kecamatan')
+			 ->where('id_kecamatan', $id_kecamatan);
+	return $this->db->get();
+}
+
+//CREATE, UPDATE, DELETE
+function create_kecamatan($data)
+{
+	$this->db->insert('kecamatan', $data);
+}	  	   
+	
+function update_kecamatan($id_kecamatan, $data)
+{
+	$this->db->where(array('id_kecamatan' => $id_kecamatan, 'id_kecamatan !=' => 1));
+	$this->db->update('kecamatan', $data);  
+}
+
+function delete_kecamatan($id_kecamatan)
+{ 
+	$this->db->delete('kecamatan', array(
+						'id_kecamatan' => $id_kecamatan, 
+						'id_kecamatan !=' => 1
+					));    
+}
+
 
 	
 

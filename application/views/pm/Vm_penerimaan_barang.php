@@ -98,13 +98,23 @@
                                 <!-- /.col-lg-6 (nested) -->                                
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <label class="control-label">Nama Barang <span class="red">*</span></label>
-                                        <input type="text" name="nmbarang"  class="form-control" required >
+                                        <label class="control-label">Jenis Barang <span class="red">*</span></label>
+                                        <select class="form-control" aria-label="Default select example" name="nmbarang"  class="form-control" required >
+                                            <option selected>--Pilih Jenis Barang--</option>
+                                            <option value="1">Laptop</option>
+                                            <option value="2">Desktop</option>
+                                            <option value="3">Server</option>
+                                        </select>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label">Merk / Seri</label>
-                                        <input type="text" name="merk_seri"  class="form-control"  >
+                                        <label class="control-label">Tipe Produk</label>
+                                            <select class="form-control" aria-label="Default select example" name="merk_seri"  class="form-control" required >
+                                            <option selected>--Pilih Tipe Produk--</option>
+                                            <option value="1">Sky</option>
+                                            <option value="2">Tactical</option>
+                                            <option value="3">Chromebook</option>
+                                        </select>
                                     </div>
 
                                     <div class="form-group">
@@ -113,60 +123,22 @@
                                     </div>
                                         
                                     <div class="form-group">
-                                        <label class="control-label">Pass / Warna</label>
-                                        <input type="text" name="pass_warna"  class="form-control"  >
-                                    </div>    
-                                    
-                                    <div class="form-group">
-                                        <label class="control-label">Memory</label>
-                                        <input type="text" name="memory"  class="form-control"  >
-                                    </div>
-
-                                    <input type="hidden" name="proc_vga"  class="form-control" value="">
-                                    <input type="hidden" name="hardisk"  class="form-control" value="">
-
-                                    <div class="form-group">
-                                        <label class="control-label">Proc / vga</label>
-                                        <input type="text" name="proc_vga"  class="form-control"  >
-                                    </div>
-                                </div>
-                                <!-- /.col-lg-6 (nested) -->
-                            </div>
-                            <!-- /.row (nested) -->
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                </div>
-
-                <div class="col-lg-6">
-                    <div class="panel panel-default">    
-                        <div class="panel-body">
-                            <div class="row">                               
-                                <div class="col-lg-12"> 
-                                    <div class="form-group">
-                                        <label class="control-label">Hardisk</label>
-                                        <input type="text" name="hardisk"  class="form-control"  >
-                                    </div> 
-                                    
-                                    <div class="form-group">
-                                        <label class="control-label">Ex service / urgent</label>
-                                        <input type="text" name="ex_service_urgent"  class="form-control"  >
-                                    </div> 
-
-                                    <div class="form-group">
                                         <label class="control-label">Kelengkapan <span class="red">*</span></label>
                                         <input type="text" name="kelengkapan"  class="form-control" required >
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label">Kerusakan <span class="red">*</span></label>
-                                        <textarea name="kerusakan" id="input" class="form-control" rows="6" required="required"></textarea>
+                                        <!-- <textarea name="kerusakan" id="input" class="form-control" rows="6" required="required"></textarea> -->
+                                        <select class="form-control"  id="input" aria-label="Default select example" name="kerusakan"  class="form-control" required >
+                                            <option selected>--Pilih Kerusakan--</option>
+                                            <option value="1">Hardware</option>
+                                            <option value="2">Software</option>
+                                        </select>
                                     </div>
 
-                                    
-
                                     <!-- Input Type Hidden -->
-                                       <input type="hidden" name="nota" type="text" value="<?php echo $nota; ?>" readonly>
+                                    <input type="hidden" name="nota" type="text" value="<?php echo $nota; ?>" readonly>
                                        <input type="hidden" name="status_servis" type="text" value="PROSES" readonly>
                                        <input type="hidden" name="status_expired" type="text" value="2090-07-12" readonly>
                                        <input type="hidden" name="tglditerima" type="text" value="<?php echo "",date("m/d/Y"); ?>" readonly>
@@ -193,6 +165,23 @@
                                             <span class="bigger-110">Simpan</span>
                                         </button> 
                                     </div>                
+                                    <!-- <div class="form-group">
+                                        <label class="control-label">Pass / Warna</label>
+                                        <input type="text" name="pass_warna"  class="form-control"  >
+                                    </div>    
+                                    
+                                    <div class="form-group">
+                                        <label class="control-label">Memory</label>
+                                        <input type="text" name="memory"  class="form-control"  >
+                                    </div>
+
+                                    <input type="hidden" name="proc_vga"  class="form-control" value="">
+                                    <input type="hidden" name="hardisk"  class="form-control" value="">
+
+                                    <div class="form-group">
+                                        <label class="control-label">Proc / vga</label>
+                                        <input type="text" name="proc_vga"  class="form-control"  >
+                                    </div> -->
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
                             </div>
@@ -200,8 +189,45 @@
                         </div>
                         <!-- /.panel-body -->
                     </div>
+                </div>
+<!-- 
+                <div class="col-lg-6">
+                    <div class="panel panel-default">    
+                        <div class="panel-body"> -->
+                            <!-- <div class="row">                                -->
+                                <!-- <div class="col-lg-12">  -->
+                                    <!-- <div class="form-group">
+                                        <label class="control-label">Hardisk</label>
+                                        <input type="text" name="hardisk"  class="form-control"  >
+                                    </div> 
+                                    
+                                    <div class="form-group">
+                                        <label class="control-label">Ex service / urgent</label>
+                                        <input type="text" name="ex_service_urgent"  class="form-control"  >
+                                    </div> 
+
+                                    <div class="form-group">
+                                        <label class="control-label">Kelengkapan <span class="red">*</span></label>
+                                        <input type="text" name="kelengkapan"  class="form-control" required >
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label">Kerusakan <span class="red">*</span></label>
+                                        <textarea name="kerusakan" id="input" class="form-control" rows="6" required="required"></textarea>
+                                    </div> -->
+
+                                    
+
+                                    
+                                <!-- </div> -->
+                                <!-- /.col-lg-6 (nested) -->
+                            <!-- </div> -->
+                            <!-- /.row (nested) -->
+                        <!-- </div> -->
+                        <!-- /.panel-body -->
+                    <!-- </div> -->
                     <!-- /.panel -->
-                </div>       
+                <!-- </div>        -->
             </div>
 
             <?php echo form_close(); ?> 

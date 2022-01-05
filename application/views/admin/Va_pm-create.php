@@ -31,21 +31,16 @@
                                             <input type="text" name="username" class="form-control" required>
                                         </div>
                                         
-                                        <div class="form-group">
-                                            <label class="control-label" for="provinsi">Provinsi <span class="red">*</span></label>
-                                            <select name="provinsi" id="provinsi" class="form-select">
-                                                <option value="">--Pilih Provinsi--</option>
-                                                <?php foreach ($provinsi as $prov) : ?>
-                                    <option value="<?= $prov->id_provinsi; ?>"><?= $prov->nama; ?></option>
-                                <?php endforeach; ?>
-                                              </select>
-                                        </div>
+                                      
                                         
-                                        
-
-                                        <div class="form-group">
-                                            <label class="control-label" for="address">Alamat <span class="red">*</span></label>
-                                            <textarea type="text" name="address" id="input" class="form-control" required="required"></textarea>
+                                        <div class="form-group">        
+                                        <label class="control-label" for="username">Cabang <span class="red">*</span></label>    
+                                        <select class="form-control" aria-label="Default select example">
+                                            <option selected>--Pilih Cabang--</option>
+                                            <option value="1">Bandung</option>
+                                            <option value="2">Medan</option>
+                                            <option value="3">Surabaya</option>
+                                        </select>
                                         </div>
                                         
                                         <div class="form-group">
@@ -53,17 +48,17 @@
                                             <input type="text" name="tlpn" class="form-control" required>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label" for="password">Password <span class="red">*</span></label>
-                                            <input type="password" name="password" class="form-control" required>
+                                            <label class="control-label" for="password">Password <span class="red">*</span> </label>
+                                            <input type="password" name="password" class="form-control" autocomplete="on" required>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label" for="passconf">Confirm Password <span class="red">*</span></label>
-                                            <input type="password" name="passconf" class="form-control" required>
+                                            <input type="password" name="passconf" class="form-control" autocomplete="on"  required>
                                         </div>
                                         <input type="reset" values="reset" class="btn btn-danger">
                                         <button type="submit" name="submit" class="btn btn-success">Simpan
                                         </button> 
-                                    <?php echo form_close(); ?>
+                                    
                                     <?php echo form_close(); ?>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
